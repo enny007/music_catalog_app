@@ -14,16 +14,18 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => CatalogProv(),)
+        ChangeNotifierProvider(
+          create: (context) => CatalogProv(),
+        )
       ],
       child: MaterialApp(
-        title: 'Flutter Demo',
+        title: 'Music Catalog',
         theme: ThemeData(
             primarySwatch: Colors.yellow,
             colorScheme: const ColorScheme.light().copyWith(
               primary: Colors.yellow,
             )),
-            debugShowCheckedModeBanner: false,
+        debugShowCheckedModeBanner: false,
         home: const LoginPage(),
       ),
     );
