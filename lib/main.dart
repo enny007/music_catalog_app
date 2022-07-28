@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:simple_provider_1/provider/catalog_provider.dart';
+import 'package:simple_provider_1/provider/theme_settings.dart';
 
 import 'pages/login.dart';
 
@@ -13,21 +14,23 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(
-          create: (context) => CatalogProv(),
-        )
-      ],
-      child: MaterialApp(
-        title: 'Music Catalog',
-        theme: ThemeData(
-            primarySwatch: Colors.yellow,
-            colorScheme: const ColorScheme.light().copyWith(
-              primary: Colors.yellow,
-            )),
-        debugShowCheckedModeBanner: false,
-        home: const LoginPage(),
-      ),
-    );
+        providers: [
+          ChangeNotifierProvider(
+            create: (context) => CatalogProv(),
+          ),
+          ChangeNotifierProvider(
+            create: ((context) => ThemeSettings()),
+          ),
+        ],
+        child: Consumer<ThemeSettings>(
+          builder: (context, value, child) {
+            return MaterialApp(
+              title: 'Music Catalog',
+              theme: value.darkTheme ? darkTheme : lightTheme,
+              debugShowCheckedModeBanner: false,
+              home: const LoginPage(),
+            );
+          },
+        ));
   }
 }

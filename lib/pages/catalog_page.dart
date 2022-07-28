@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:simple_provider_1/pages/cart_page.dart';
 import 'package:simple_provider_1/provider/catalog_provider.dart';
+import 'package:simple_provider_1/provider/theme_settings.dart';
 
 // ignore: must_be_immutable
 class CatalogPage extends StatelessWidget {
@@ -38,6 +39,32 @@ class CatalogPage extends StatelessWidget {
               ),
             ),
           ],
+        ),
+        drawer: Drawer(
+          backgroundColor: Colors.white,
+          child: Stack(
+            children: [
+              Align(
+                alignment: Alignment.bottomLeft,
+                child: Consumer<ThemeSettings>(
+                  builder: (context, value, child) {
+                    return SwitchListTile(
+                      title: const Text(
+                        'Change Theme',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      value: value.darkTheme,
+                      onChanged: (newValue) {
+                        value.toggleTheme();
+                      },
+                    );
+                  },
+                ),
+              )
+            ],
+          ),
         ),
         body: ListView.separated(
             shrinkWrap: true,
