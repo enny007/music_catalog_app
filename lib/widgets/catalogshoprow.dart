@@ -22,16 +22,17 @@ class CatalogShopRow extends StatelessWidget {
       ),
       subtitle: Text(
         catalog!.price!.toStringAsFixed(2),
-        style: const TextStyle(color: Colors.white),
+        style: TextStyle(color: Theme.of(context).primaryColor),
       ),
       trailing: IconButton(
-          onPressed: () {
-            onDelete();
-          },
-          icon: const Icon(
-            Icons.delete_forever,
-            color: Colors.black,
-          )),
+        onPressed: () {
+          onDelete();
+        },
+        icon: Icon(
+          Icons.delete_forever,
+          color: Theme.of(context).primaryColor,
+        ),
+      ),
     );
   }
 }

@@ -5,7 +5,6 @@ import 'package:simple_provider_1/provider/catalog_provider.dart';
 
 import '../widgets/catalogshop.dart';
 
-
 class CartPage extends StatelessWidget {
   const CartPage({Key? key}) : super(key: key);
 
@@ -17,12 +16,11 @@ class CartPage extends StatelessWidget {
         title: Text(
           'Cart',
           style: GoogleFonts.rubikMoonrocks(
-              color: Colors.black, fontWeight: FontWeight.bold),
+              color: Theme.of(context).primaryColor,
+              fontWeight: FontWeight.bold),
         ),
-        backgroundColor: Colors.white,
       ),
       body: Container(
-        color: Colors.yellow,
         child: Column(
           children: [
             Expanded(
@@ -34,19 +32,20 @@ class CartPage extends StatelessWidget {
                       child: Center(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
+                          children: [
                             Icon(
                               Icons.shopping_cart,
                               size: 50,
-                              color: Colors.black,
+                              color: Theme.of(context).primaryColor,
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 15,
                             ),
                             Text(
                               'You don\'t have any items in\nyour cart yet!',
                               textAlign: TextAlign.center,
-                              style: TextStyle(color: Colors.black),
+                              style: TextStyle(
+                                  color: Theme.of(context).primaryColor),
                             )
                           ],
                         ),
@@ -115,6 +114,3 @@ class CartPage extends StatelessWidget {
     );
   }
 }
-
-
-

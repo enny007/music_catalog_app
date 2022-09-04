@@ -14,23 +14,26 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-        providers: [
-          ChangeNotifierProvider(
-            create: (context) => CatalogProv(),
-          ),
-          ChangeNotifierProvider(
-            create: ((context) => ThemeSettings()),
-          ),
-        ],
-        child: Consumer<ThemeSettings>(
-          builder: (context, value, child) {
-            return MaterialApp(
-              title: 'Music Catalog',
-              theme: value.darkTheme ? darkTheme : lightTheme,
-              debugShowCheckedModeBanner: false,
-              home: const LoginPage(),
-            );
-          },
-        ));
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => CatalogProv(),
+        ),
+        ChangeNotifierProvider(
+          create: ((context) => ThemeSettings()),
+        ),
+      ],
+      child: Consumer<ThemeSettings>(
+        builder: (context, provider, child) {
+          return MaterialApp(
+            title: 'Music Catalog',
+            theme:
+                provider.darkTheme ? MyThemes.darkTheme : MyThemes.lightTheme,
+            darkTheme: MyThemes.darkTheme,
+            debugShowCheckedModeBanner: false,
+            home: const LoginPage(),
+          );
+        },
+      ),
+    );
   }
 }

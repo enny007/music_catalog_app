@@ -21,7 +21,7 @@ class CatalogPage extends StatelessWidget {
           title: Text(
             'Catalog',
             style: GoogleFonts.rubikMoonrocks(
-              color: Colors.black,
+              color: Theme.of(context).primaryColor,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -33,38 +33,29 @@ class CatalogPage extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => const CartPage()),
                 );
               },
-              icon: const Icon(
+              icon: Icon(
                 Icons.shopping_cart,
-                color: Colors.black,
+                color: Theme.of(context).primaryColor,
               ),
             ),
+            Stack(
+              children: [
+                Align(
+                  alignment: Alignment.bottomLeft,
+                  child: Consumer<ThemeSettings>(
+                    builder: (context, value, child) {
+                      return Switch.adaptive(
+                        value: value.darkTheme,
+                        onChanged: (newValue) {
+                          value.toggleTheme();
+                        },
+                      );
+                    },
+                  ),
+                )
+              ],
+            ),
           ],
-        ),
-        drawer: Drawer(
-          backgroundColor: Colors.white,
-          child: Stack(
-            children: [
-              Align(
-                alignment: Alignment.bottomLeft,
-                child: Consumer<ThemeSettings>(
-                  builder: (context, value, child) {
-                    return SwitchListTile(
-                      title: const Text(
-                        'Change Theme',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      value: value.darkTheme,
-                      onChanged: (newValue) {
-                        value.toggleTheme();
-                      },
-                    );
-                  },
-                ),
-              )
-            ],
-          ),
         ),
         body: ListView.separated(
             shrinkWrap: true,
@@ -79,8 +70,8 @@ class CatalogPage extends StatelessWidget {
                 title: Text(catalogProv.categories.items[index].name!),
                 subtitle: Text(
                   '\$${catalogProv.categories.items[index].price!.toStringAsFixed(2)}',
-                  style: const TextStyle(
-                    color: Colors.yellow,
+                  style: TextStyle(
+                    color: Theme.of(context).primaryColor,
                   ),
                 ),
                 trailing: Consumer<CatalogProv>(
@@ -95,14 +86,14 @@ class CatalogPage extends StatelessWidget {
                           'ADD',
                           style: GoogleFonts.rubikMoonrocks(
                             fontWeight: FontWeight.bold,
-                            color: Colors.black,
+                            color: Theme.of(context).primaryColor,
                           ),
                         ),
                       );
                     }
-                    return const Icon(
+                    return Icon(
                       Icons.check_rounded,
-                      color: Colors.black,
+                      color: Theme.of(context).primaryColor,
                     );
                   },
                 ),

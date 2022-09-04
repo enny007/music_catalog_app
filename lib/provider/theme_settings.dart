@@ -1,27 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-ThemeData lightTheme = ThemeData(
-  brightness: Brightness.light,
-  primarySwatch: Colors.red,
-  primaryColor: Colors.white,
-  colorScheme: const ColorScheme.light().copyWith(
-    primary: Colors.yellow,
-    brightness: Brightness.light,
-  ),
-  backgroundColor: Colors.white,
-);
+class MyThemes {
+  static ThemeData lightTheme = ThemeData(
+    scaffoldBackgroundColor: Colors.white,
+    primaryColor: Colors.black,
+    colorScheme: const ColorScheme.light().copyWith(
+      primary: Colors.yellow,
+    ),
+  );
 
-ThemeData darkTheme = ThemeData(
-  brightness: Brightness.dark,
-  primarySwatch: Colors.red,
-  primaryColor: Colors.black,
-  colorScheme: const ColorScheme.light().copyWith(
-    primary: Colors.yellow,
-    brightness: Brightness.dark,
-  ),
-  backgroundColor: Colors.black,
-);
+  static ThemeData darkTheme = ThemeData(
+    scaffoldBackgroundColor: Colors.grey.shade900,
+    primaryColor: Colors.white,
+    colorScheme: const ColorScheme.dark(),
+  );
+}
 
 class ThemeSettings with ChangeNotifier {
   bool _darkTheme = false;
@@ -48,7 +42,7 @@ class ThemeSettings with ChangeNotifier {
   }
 
   void toggleTheme() {
-    _darkTheme = !_darkTheme;
+    _darkTheme = !darkTheme;
     _saveSettingsToPrefs();
     notifyListeners();
   }
