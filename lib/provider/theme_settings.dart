@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class MyThemes {
+  //So any modification to the ui color will be donw in this class
   static ThemeData lightTheme = ThemeData(
     scaffoldBackgroundColor: Colors.white,
     primaryColor: Colors.black,

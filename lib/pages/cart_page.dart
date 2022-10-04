@@ -92,8 +92,8 @@ class CartPage extends StatelessWidget {
                                 ),
                                 ElevatedButton(
                                   style: ButtonStyle(
-                                    backgroundColor:
-                                        MaterialStateProperty.all(Colors.white),
+                                    backgroundColor: MaterialStateProperty.all(
+                                        Colors.yellow),
                                   ),
                                   onPressed: () {},
                                   child: const Text(
