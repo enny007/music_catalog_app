@@ -1,6 +1,6 @@
 # simple_provider_1
 
-A new Flutter project.
+A new Flutter project | 2025.
 
 ## Getting Started
 
